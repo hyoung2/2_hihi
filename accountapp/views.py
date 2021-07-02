@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def hi_nini (request):
-    return HttpResponse('Aloha')
+    return render(request, base.html)
