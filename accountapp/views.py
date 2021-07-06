@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def hi_nini(request):
-    return render(request, 'accountapp')
+    return render(request, 'accountapp/hi_nini.html')
