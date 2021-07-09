@@ -8,10 +8,13 @@
 
         <form action="/accounts/hi_nini/" method ="POST">
             {% csrf_token %}
-            <input type="submit" button type="button" class="btn btn-outline-info rounded-pill px-5">
+            <input type="text" name="input_text">
+            <input type="submit"
+                   value="SEND"
+                   button type="button" class="btn btn-outline-info rounded-pill px-5">
         </form>
 
-        <h3> {{ 'text' }}</h3>
+        <h3> {{ new_model.text }}</h3>
 </div>
 
 {% endblock %}
