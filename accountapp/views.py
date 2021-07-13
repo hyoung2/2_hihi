@@ -15,10 +15,11 @@ def hi_nini(request):
         new_model.text = temp
         new_model.save()
 
-
+        data_list = NewModel.objects.all()
         return render(request, 'accountapp/hi_nini.html',
-                      context={'new_model':new_model})
+                      context={'data_list':data_list})
     else:
+        data_list = NewModel.objects.all()
         return render(request, 'accountapp/hi_nini.html',
-                      context={'text':'GET METHOD'})
+                      context={'data_list': data_list})
 
