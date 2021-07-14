@@ -6,7 +6,23 @@
     <div class="iceflower_header_botton">
         <span>nav1</span>
         <span>nav2</span>
-        <span>nav3</span>
-        <span>nav4</span>
+        {% if not user.is_authenticated %}
+        <span>
+            <a href="{% url 'accountapp:login' %}">
+                LOGIN
+            </a>
+        </span>
+        <span>
+            <a href="{% url 'accountapp:create' %}">
+                SIGNUP
+            </a>
+        </span>
+        {% else %}
+        <span>
+            <a href="{% url 'accountapp:logout' %}">
+                LOGOUT
+            </a>
+        </span>
+        {% endif %}
     </div>
 </div>
