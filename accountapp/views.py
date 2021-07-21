@@ -13,20 +13,23 @@ from accountapp.models import NewModel
 
 
 def hi_nini(request):
-    if request.method == "POST":
+    if request.user.is_authenticated:
+        if request.method == "POST":
 
-        temp = request.POST.get('input_text')
+            temp = request.POST.get('input_text')
 
-        new_model = NewModel()
-        new_model.text = temp
-        new_model.save()
+            new_model = NewModel()
+            new_model.text = temp
+            new_model.save()
 
-        return HttpResponseRedirect(reverse('accountapp:aloha'))
+            return HttpResponseRedirect(reverse('accountapp:aloha'))
 
+        else:
+            data_list = NewModel.objects.all()
+            return render(request, 'accountapp/hi_nini.html',
+                          context={'data_list': data_list})
     else:
-        data_list = NewModel.objects.all()
-        return render(request, 'accountapp/hi_nini.html',
-                      context={'data_list': data_list})
+        return HttpResponseRedirect(reverse('accountapp:login'))
 
 class AccountCreateView(CreateView):
     model = User
@@ -47,8 +50,34 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('accountapp:aloha')
     template_name = 'accountapp/update.html'
 
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().get(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:aloha')
     template_name = 'accountapp/delete.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().get(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().post(self, request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect(reverse('accountapp:login'))
+
