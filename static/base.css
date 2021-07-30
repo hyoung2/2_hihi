@@ -31,3 +31,15 @@
 .NP {
    font-family: "NanumPen", cursive;
 }
+
+.round_button{
+    color: lightblue;
+    text-decoration: none;
+    box-shadow: 0 0 3px cadetblue;
+    border-radius: 20rem;
+    padding: 0.3rem;
+}
+
+.round_button:hover{
+    color: dimgray;
+}
