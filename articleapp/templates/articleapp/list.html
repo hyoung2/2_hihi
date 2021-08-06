@@ -22,11 +22,11 @@
 
     </style>
 
-    <div class="container">
+    <div class="container my-4">
 
         {% for article in article_list %}
 
-            <div>
+            <div >
                 <a href="{% url 'articleapp:detail' pk=article.pk %}">
                     <img src="{{ article.image.url }}" alt="">
                 </a>
@@ -38,5 +38,7 @@
     </div>
 
     <script src="{% static 'js/magicgrid.js' %}"></script>
+
+    {% include  'snippets/pagination.html' %}
 
 {% endblock %}
