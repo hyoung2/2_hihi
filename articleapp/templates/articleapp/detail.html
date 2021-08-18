@@ -44,11 +44,14 @@
 
                 <div class="comment_box">
                     <div>
+                        <img src="{{ comment.writer.profile.image.url }}"
+                             class="comment_image m-2"
+                             alt="">
                         <span class="NP"
                               style="font-size: 1.5rem;">
                             {{ comment.writer.profile.nickname }}
                         </span>
-                        <span>{{ comment.created_at }}</span>
+                        <div>{{ comment.created_at }}</div>
                     </div>
                     <div>
                         <p style="font-size: 1.2rem">
