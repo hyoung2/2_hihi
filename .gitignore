@@ -84,3 +84,7 @@ __pycache__/
 media/
 
 staticfiles/
+
+
+ice_hini_gcp
+ice_hini_gcp.pub
